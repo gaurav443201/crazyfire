@@ -1,6 +1,6 @@
-import { ServerPlayer } from './ServerPlayer';
-import { HitValidator } from './weapons/HitValidator';
-import { AntiCheat } from './anticheat/AntiCheat';
+import { ServerPlayer } from './ServerPlayer.js';
+import { HitValidator } from './weapons/HitValidator.js';
+import { AntiCheat } from './anticheat/AntiCheat.js';
 
 export type TeamId = 'alpha' | 'bravo';
 export type GameState = 'lobby' | 'playing' | 'finished';

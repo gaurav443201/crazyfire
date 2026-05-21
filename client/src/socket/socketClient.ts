@@ -1,6 +1,10 @@
 import { io, Socket } from 'socket.io-client';
 
-const SERVER_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:3001';
+// In production (Render) server and client share the same origin.
+// In local dev the Vite dev server runs on :5173 but the game server is on :3001.
+const SERVER_URL =
+  import.meta.env.VITE_SERVER_URL ||
+  (import.meta.env.DEV ? 'http://localhost:3001' : window.location.origin);
 
 class SocketClient {
   private socket: Socket | null = null;

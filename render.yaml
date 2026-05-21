@@ -1,12 +1,12 @@
 services:
   - type: web
-    name: crazyfire-server
+    name: crazyfire
     runtime: node
-    rootDir: server
-    buildCommand: npm install && npm run build
-    startCommand: npm start
+    rootDir: .
+    buildCommand: >
+      cd client && npm install --legacy-peer-deps && npm run build &&
+      cd ../server && npm install && npm run build
+    startCommand: node server/dist/index.js
     envVars:
       - key: NODE_ENV
         value: production
-      - key: CLIENT_ORIGIN
-        sync: false   # You will fill this in Render dashboard after Vercel deploy

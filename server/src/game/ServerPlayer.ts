@@ -1,4 +1,4 @@
-import { TeamId } from './GameRoom';
+import { TeamId } from './GameRoom.js';
 
 export class ServerPlayer {
   id: string;

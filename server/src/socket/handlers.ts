@@ -1,6 +1,6 @@
 import { Server, Socket } from 'socket.io';
-import { RoomManager } from '../rooms/RoomManager';
-import { GameRoom } from '../game/GameRoom';
+import { RoomManager } from '../rooms/RoomManager.js';
+import { GameRoom } from '../game/GameRoom.js';
 
 export function setupSocketHandlers(io: Server, roomManager: RoomManager) {
   const TICK_RATE = 20;
@@ -12,7 +12,7 @@ export function setupSocketHandlers(io: Server, roomManager: RoomManager) {
       if (room.state !== 'playing') return;
 
       // Respawn dead players
-      room.players.forEach(p => {
+      room.players.forEach((p: import('../game/ServerPlayer.js').ServerPlayer) => {
         if (!p.isAlive && Date.now() >= p.respawnTime) {
           const spawn = room.getSpawnPosition(p.team);
           p.respawn(spawn);

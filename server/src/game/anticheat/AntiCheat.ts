@@ -1,4 +1,4 @@
-import { ServerPlayer } from '../ServerPlayer';
+import { ServerPlayer } from '../ServerPlayer.js';
 
 const MAX_SPEED = 12; // units/second
 const MAX_SPEED_TOLERANCE = 1.5;

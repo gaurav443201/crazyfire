@@ -1,4 +1,4 @@
-import { ServerPlayer } from '../ServerPlayer';
+import { ServerPlayer } from '../ServerPlayer.js';
 
 const WEAPON_STATS: Record<string, { damage: number; headshotMultiplier: number; range: number; fireRate: number }> = {
   m4a1: { damage: 30, headshotMultiplier: 2.5, range: 60, fireRate: 100 },
