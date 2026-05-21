@@ -8,9 +8,24 @@ import { setupSocketHandlers } from './socket/handlers';
 const app = express();
 const httpServer = createServer(app);
 
+// Allow localhost in dev, and the deployed Vercel URL via env var in production
+const allowedOrigins: string[] = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  ...(process.env.CLIENT_ORIGIN ? [process.env.CLIENT_ORIGIN] : []),
+];
+
 const io = new Server(httpServer, {
   cors: {
-    origin: ['http://localhost:5173', 'http://localhost:3000', '*'],
+    origin: (origin, callback) => {
+      // allow requests with no origin (e.g. mobile apps, curl)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
+        callback(null, true);
+      } else {
+        callback(new Error(`CORS blocked: ${origin}`));
+      }
+    },
     methods: ['GET', 'POST'],
     credentials: true
   },
