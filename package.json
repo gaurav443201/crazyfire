@@ -1,0 +1,12 @@
+{
+  "name": "crazyfire",
+  "version": "1.0.0",
+  "description": "CRAZYFIRE Multiplayer FPS - monorepo root",
+  "private": true,
+  "scripts": {
+    "build": "npm install --prefix client --legacy-peer-deps && npm run build --prefix client && npm install --prefix server && npm run build --prefix server",
+    "start": "node server/dist/index.js",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client"
+  }
+}
