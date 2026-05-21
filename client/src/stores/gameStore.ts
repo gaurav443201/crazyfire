@@ -78,6 +78,7 @@ interface GameStore {
   showDamage: boolean;
   fps: number;
   ping: number;
+  crosshairSpread: number;
 
   // Settings
   sensitivity: number;
@@ -133,6 +134,7 @@ export const useGameStore = create<GameStore>((set) => ({
   showDamage: false,
   fps: 0,
   ping: 0,
+  crosshairSpread: 10,
   sensitivity: 0.002,
   fov: 75,
   crosshairColor: '#ffffff',
